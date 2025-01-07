@@ -25,7 +25,7 @@
                         <h1 class="mt-4 mb-4">Change Password</h1>
                        
                        {{-- notifikasi sukses --}}
-                       @if ($sukses = Session::get('succsess'))
+                       @if ($sukses = Session::get('success'))
                        <div class="alert alert-success alert-dismissible fade show" role="alert">
                        <strong>{{ $sukses }}</strong>
                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
