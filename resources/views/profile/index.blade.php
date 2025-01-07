@@ -13,17 +13,7 @@
         <link href="{{url("css/new.css")}}" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
-        <style>
-             .card{
-                border: none;
-                border-radius: 20px;
-            }
-            .card-header{
-               border-bottom:none;
-                background: none; 
-            }
-            
-        </style>
+       
     </head>
     <body class="sb-nav-fixed">
      

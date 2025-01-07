@@ -13,17 +13,7 @@
         <link href="{{url("css/new.css")}}" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
-        <style>
-             .card{
-                border: none;
-                border-radius: 20px;
-            }
-            .card-header{
-               border-bottom:none;
-                background: none; 
-            }
-            
-        </style>
+        
     </head>
     <body class="sb-nav-fixed">
      
@@ -56,7 +46,7 @@
                                        
                                         <label for="old_password"><strong>Old Password</strong></label>
                                         <input id="password" type="password" name="old_password" class="form-control @error('old_password') is-invalid @enderror" required>
-                                        <input type="checkbox" onclick="myFunction()">Show Password
+                                      
                                         @error('old_password')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -67,7 +57,7 @@
                                     <div class="form-group mb-3">
                                         <label for="new_password"><strong>New Password</strong></label>
                                         <input id="password" type="password" name="new_password" class="form-control @error('new_password') is-invalid @enderror" required>
-                                        <input type="checkbox" onclick="myFunction()">Show Password
+                                        
                                         @error('new_password')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -78,7 +68,7 @@
                                     <div class="form-group mb-3">
                                         <label for="new_password_confirmation"><strong>Confirm New Password</strong></label>
                                         <input id="password" type="password" name="new_password_confirmation" class="form-control @error('new_password_confirmation') is-invalid @enderror"  required>
-                                        <input type="checkbox" onclick="myFunction()">Show Password
+                                
                                         @error('new_password_confirmation')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -106,16 +96,7 @@
                 </footer>
             </div>
         </div>
-        <script>
-            function myFunction() {
-              var x = document.getElementById("password");
-              if (x.type === "password") {
-                x.type = "text";
-              } else {
-                x.type = "password";
-              }
-            }
-            </script>
+     
         
         <script src="{{url("js/scripts.js")}}"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

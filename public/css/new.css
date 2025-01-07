@@ -9,3 +9,11 @@ a {
     text-align: center;
 }
 
+.card{
+    border: none;
+    border-radius: 20px;
+}
+.card-header{
+   border-bottom:none;
+    background: none; 
+}
