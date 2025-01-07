@@ -53,7 +53,7 @@
                                 <div class="form-group mb-3">
                                     <label for="tgl_order" class="mb-2"><strong>Tgl Order</strong></label>
                                     <input type="text" name="tgl_order" class="form-control @error('tgl_order') is-invalid @enderror" value="{{old('',$order->tgl_order)}}"  required>
-                                    <!-- pesan error untuk nama pengirim -->
+                                    <!-- pesan error untuk nama tgl order -->
                                     @error('tgl_order')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -63,7 +63,7 @@
                                 <div class="form-group mb-3">
                                     <label for="no_po_md" class="mb-2"><strong>No PO MD</strong></label>
                                     <input type="text" name="no_po_md" class="form-control @error('no_po_md') is-invalid @enderror" value="{{old('',$order->no_po_md)}}"  required>
-                                    <!-- pesan error untuk nama pengirim -->
+                                    <!-- pesan error untuk nama no po md -->
                                     @error('no_po_md')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -73,8 +73,18 @@
                                 <div class="form-group mb-3">
                                     <label for="tgl_proses_md" class="mb-2"><strong>Tgl Proses MD</strong></label>
                                     <input type="text" name="tgl_proses_md" class="form-control @error('tgl_proses_md') is-invalid @enderror" value="{{old('',$order->tgl_proses_md)}}"  required>
-                                    <!-- pesan error untuk nama pengirim -->
+                                    <!-- pesan error untuk nama tgl proses md -->
                                     @error('tgl_proses_md')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="part_no" class="mb-2"><strong>Part No</strong></label>
+                                    <input type="text" name="part_no" class="form-control @error('part_no') is-invalid @enderror" value="{{old('',$order->part_no)}}"  required>
+                                    <!-- pesan error untuk nama part no -->
+                                    @error('part_no')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
@@ -83,7 +93,7 @@
                                 <div class="form-group mb-3">
                                     <label for="tgl_order_ke_ahm" class="mb-2"><strong>Tgl Order ke AHM</strong></label>
                                     <input type="text" name="tgl_order_ke_ahm" class="form-control @error('tgl_order_ke_ahm') is-invalid @enderror" value="{{old('',$order->tgl_order_ke_ahm)}}"  required>
-                                    <!-- pesan error untuk nama pengirim -->
+                                    <!-- pesan error untuk nama tgl order ke ahm -->
                                     @error('tgl_order_ke_ahm')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -93,7 +103,7 @@
                                 <div class="form-group mb-3">
                                     <label for="etd_ahm" class="mb-2"><strong>ETD AHM</strong></label>
                                     <input type="text" name="etd_ahm" class="form-control @error('etd_ahm') is-invalid @enderror" value="{{old('',$order->etd_ahm)}}"  required>
-                                    <!-- pesan error untuk nama pengirim -->
+                                    <!-- pesan error untuk nama etd ahm -->
                                     @error('etd_ahm')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -103,7 +113,7 @@
                                 <div class="form-group mb-3">
                                     <label for="tgl_supply_ahm" class="mb-2"><strong>Tgl Supply AHM</strong></label>
                                     <input type="text" name="tgl_supply_ahm" class="form-control @error('tgl_supply_ahm') is-invalid @enderror" value="{{old('',$order->tgl_supply_ahm)}}" >
-                                    <!-- pesan error untuk nama pengirim -->
+                                    <!-- pesan error untuk nama tgl supply ahm -->
                                     @error('tgl_supply_ahm')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -113,7 +123,7 @@
                                 <div class="form-group mb-3">
                                     <label for="tgl_gi_supply_md" class="mb-2"><strong> TGL GI / supply MD</strong></label>
                                     <input type="text" name="tgl_gi_supply_md" class="form-control @error('tgl_gi_supply_md') is-invalid @enderror" value="{{old('',$order->tgl_gi_supply_md)}}">
-                                    <!-- pesan error untuk nama pengirim -->
+                                    <!-- pesan error untuk nama tgl gi supply md -->
                                     @error('tgl_gi_supply_md')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -123,7 +133,7 @@
                                 <div class="form-group mb-3">
                                     <label for="no_po_ahm" class="mb-2"><strong>No PO AHM</strong></label>
                                     <input type="text" name="no_po_ahm" class="form-control @error('no_po_ahm') is-invalid @enderror" value="{{old('',$order->no_po_ahm)}}"  required>
-                                    <!-- pesan error untuk nama pengirim -->
+                                    <!-- pesan error untuk no po ahm -->
                                     @error('no_po_ahm')
                                     <div class="invalid-feedback">
                                         {{ $message }}

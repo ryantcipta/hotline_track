@@ -6,20 +6,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Dashboard</title>
-        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-        <link href="css/styles.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.bootstrap5.css" />
+        <link href="{{url("css/styles.css")}}" rel="stylesheet" />
         <link href="{{url("css/new.css")}}" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-        <style>
-            .card{
-                border: none;
-            }
-            .card-header{
-                border: none;   
-            }
-        </style>
     </head>
     <body class="sb-nav-fixed">
      
@@ -58,37 +52,35 @@
                                     </div>
                                 </div>
                             </div>
-                            {{-- <div class="col-xl-3 col-md-6">
-                                <div class="card bg-success text-white mb-4">
-                                    <div class="card-body">Success Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-danger text-white mb-4">
-                                    <div class="card-body">Danger Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div> --}}
+                          
                         </div>
                       
-                       
-                        <div class="shadow-lg p-3 mb-5 bg-white rounded">
+
                             <div class="card">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                DataTable
+                                Data Order
                             </div>
                             <div class="card-body">
-
+                                <div class="table-responsive">
+                                    <table class="table table-bordered  table-striped order-table">
+                                        <thead>
+                                            <tr>
+                                                <th >No</th>
+                                                <th>No POP Hotline</th>
+                                                <th >Tgl Order</th>
+                                                <th >No PO MD</th>
+                                                <th >Tgl Proses MD</th>
+                                                <th >No PO AHM</th>
+                                                <th >Tgl Order ke AHM </th>
+                                                <th >ETD AHM</th>
+                                                <th >Tgl Supply AHM</th>
+                                                <th >Tgl GI/Supply MD</th>  
+                                            </tr>
+                                        </thead>   
+                                    </table>
+                                </div>
                             </div>
-                        </div>
                         </div>
                     </div>
                 </main>
@@ -96,18 +88,53 @@
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
                             <div class="text-muted">Copyright &copy; 2024</div>
-                          
                         </div>
                     </div>
                 </footer>
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-        <script src="js/datatables-simple-demo.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+            <script type="text/javascript">
+              $(function () {
+             
+                var table = $('.order-table').DataTable({
+                    processing: true,
+                    serverSide: true,
+
+                    ajax: "{{ route('dashboard.index') }}",
+                    columns: [
+
+                         {
+                            data: null, // Data untuk nomor urut
+                            name: 'no',
+                            orderable: false, // Tidak bisa diurutkan
+                            searchable: false, // Tidak bisa dicari
+                            render: function (data, type, row, meta) {
+                                return meta.row + meta.settings._iDisplayStart + 1; // meta.row memberikan indeks baris
+                            }
+                          },
+                        {data: 'no_pop_hotline', name: 'no_pop_hotline'},
+                        {data: 'tgl_order', name: 'tgl_order'},
+                        {data: 'no_po_md', name: 'no_po_md'},
+                        {data: 'tgl_proses_md', name: 'tgl_proses_md'},
+                        {data: 'no_po_ahm', name: 'no_po_ahm'},
+                        {data: 'tgl_order_ke_ahm', name: 'tgl_order_ke_ahm'},
+                        {data: 'etd_ahm', name: 'etd_ahm'},
+                        {data: 'tgl_supply_ahm', name: 'tgl_supply_ahm'},
+                        {data: 'tgl_gi_supply_md', name: 'tgl_gi_supply_md'},
+    
+                    ]
+                });
+                   
+              });
+            </script>
+           
+            <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+            <script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        
+            <script src="{{url("js/scripts.js")}}"></script>
+          
     </body>
 </html>

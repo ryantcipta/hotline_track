@@ -36,16 +36,16 @@ class TrackingController extends Controller
 
     
 
-    public function showTracking()
-    {
-        // Ambil data dari database
-        $orders = Order::all();
+    // public function showTracking()
+    // {
+    //     // Ambil data dari database
+    //     $order = Order::all();
 
-        // Tambahkan 3 hari pada tgl_gi_supply_md untuk setiap item
-        // foreach ($orders as $item) {
-        //     $item->tgl_kirim_ke_dealer = Carbon::parse($item->tgl_gi_supply_md)->addDays(3)->format('d-m-Y'); // Format bisa disesuaikan
-        // }
+    //     // Tambahkan 3 hari pada tgl_gi_supply_md untuk setiap item
+    //     // foreach ($orders as $item) {
+    //     //     $item->tgl_kirim_ke_dealer = Carbon::parse($item->tgl_gi_supply_md)->addDays(3)->format('d-m-Y'); // Format bisa disesuaikan
+    //     // }
 
-        return view('tracking', compact('orders'));
-    }
+    //     return view('home.tracking', compact('order'));
+    // }
 }

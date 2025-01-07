@@ -16,6 +16,8 @@
                 {{-- <li><a class="dropdown-item" href="#!">Settings</a></li> --}}
                 <li><a class="dropdown-item" href="{{url('profile')}}"><i class="fa-solid fa-address-card"></i> Profile</a></li>
                 <li><hr class="dropdown-divider" /></li> 
+                <li><a class="dropdown-item" href="{{route('password.change')}}"><i class="fa-solid fa-key"></i> Change Password</a></li>
+                <li><hr class="dropdown-divider" /></li> 
                 <li><a class="dropdown-item" href="{{route('logout')}}"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a></li>
             </ul>
         </li>

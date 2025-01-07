@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PengirimanController;
 use App\Http\Controllers\ProfileController;
@@ -33,15 +32,10 @@ use App\Models\User;
 
 
 
-// Route::get('/siswa',[SiswaController::class,'index']);
-// Route::get('/siswa/export_excel', [SiswaController::class,'export_excel']);
-// Route::post('/siswa/import_excel', [SiswaController::class,'import_excel']);
-
 //route order
 Route::group(['middleware'=>['auth']], function(){
 Route::group(['middleware'=>['ceklogin:admin']], function(){
     Route::get('/order',[OrderController::class,'index'])->name('order');
-    Route::get('/orders-data', [OrderController::class, 'getOrders'])->name('orders.data');
     Route::post('/order/import_excel', [OrderController::class,'import_excel']);
     Route::get('/order/{id}/edit',[OrderController::class, 'edit'])->name('order.edit');
     Route::put('/order/{id}',[OrderController::class, 'update'])->name('order.update');
@@ -50,36 +44,22 @@ Route::group(['middleware'=>['ceklogin:admin']], function(){
 });
 });
 
-Route::get('/tracking',function(){
-    return view('tracking');
-});
 
-// Route::get('/pengiriman',[PengirimanController::class,'index'])->name('pengiriman');
-// Route::post('/pengiriman/import_excel', [PengirimanController::class,'import_excel']);
-// Route::get('/pengiriman-create',[PengirimanController::class,'create'])->name('pengiriman.create');
-// Route::post('/pengiriman', [PengirimanController::class, 'store'])->name('pengiriman.store');
-// Route::get('/pengiriman/{id}/edit', [PengirimanController::class, 'edit'])->name('pengiriman.edit');
-// Route::put('/pengiriman/{id}', [PengirimanController::class, 'update'])->name('pengiriman.update');
-// Route::delete('/pengiriman{id}/destroy',[PengirimanController::class, 'destroy'])->name('pengiriman.destroy');
-
-
-// Route::get('/test', function (){
-//     return view ('test');
-// });
 
 Route::get('/login', [UserController::class,'showLoginForm']);
 Route::post('/login', [UserController::class,'login'])->name('auth.login'); 
-Route::get('/register', [UserController::class, 'showRegistrationForm']);
-Route::post('/register', [UserController::class, 'register'])->name('register');
+// Route::get('/register', [UserController::class, 'showRegistrationForm']);
+// Route::post('/register', [UserController::class, 'register'])->name('register');
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
  
 //route tracking
 Route::get('/tracking-hotline', [TrackingController::class, 'index']);
 Route::get('/search', [TrackingController::class, 'index'])->name('search');
 
+
 //route dashboard
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('ceklogin:admin');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index')->middleware('ceklogin:admin');
 });
 
 
@@ -136,15 +116,12 @@ Route::group(['middleware'=>['auth']], function(){
     Route::group(['middleware'=>['ceklogin:admin']], function(){
         Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
         Route::put('/profile/{id}', [ProfileController::class, 'update'])->name('profile.update');
-        
+        Route::get('/change-password', [ProfileController::class, 'showChangePasswordForm'])->name('password.change');
+        Route::post('/change-password', [ProfileController::class, 'changePassword'])->name('update.password');
     });
 });
     
 
-Route::get('/index', function(){
-return view ('index');
-});
 
-Route::get('/user',[UserController::class, 'edit_list']);
-
-
+// Route::get('/user',[UserController::class, 'edit_list']);
+    

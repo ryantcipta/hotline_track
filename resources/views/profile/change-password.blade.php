@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Profile</title>
+        <title>Change Password</title>
         
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="{{url("css/styles.css")}}" rel="stylesheet" />
@@ -32,10 +32,10 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4 mb-4">Profile</h1>
+                        <h1 class="mt-4 mb-4">Change Password</h1>
                        
                        {{-- notifikasi sukses --}}
-                       @if ($sukses = Session::get('sukses'))
+                       @if ($sukses = Session::get('succsess'))
                        <div class="alert alert-success alert-dismissible fade show" role="alert">
                        <strong>{{ $sukses }}</strong>
                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -45,18 +45,19 @@
                        <div class="shadow p-3 mb-5 bg-white rounded">
                         <div class="card mb-4">
                             <div class="card-header">
-                               
+                                
                             </div>
                             
                             <div class="card-body">
-                                <form action="{{ route('profile.update', $users->id) }}" method="POST">
+                                <form action="{{ route('update.password') }}" method="POST">
                                     @csrf
-                                    @method('PUT')
+                                  
                                     <div class=" form-group mb-3">
-                                        <label for="name"><strong>Nama</strong></label>
-                                        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{old('name',$users->name)}}"  required>
-                                        <!-- pesan error untuk nama -->
-                                        @error('name')
+                                       
+                                        <label for="old_password"><strong>Old Password</strong></label>
+                                        <input id="password" type="password" name="old_password" class="form-control @error('old_password') is-invalid @enderror" required>
+                                        <input type="checkbox" onclick="myFunction()">Show Password
+                                        @error('old_password')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
@@ -64,10 +65,10 @@
                                     </div>
                 
                                     <div class="form-group mb-3">
-                                        <label for="username"><strong>Username</strong></label>
-                                        <input type="text" name="username" class="form-control @error('username') is-invalid @enderror" value="{{old('username',$users->username)}}"  required>
-                                        <!-- pesan error untuk nama pengguna -->
-                                        @error('username')
+                                        <label for="new_password"><strong>New Password</strong></label>
+                                        <input id="password" type="password" name="new_password" class="form-control @error('new_password') is-invalid @enderror" required>
+                                        <input type="checkbox" onclick="myFunction()">Show Password
+                                        @error('new_password')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
@@ -75,10 +76,10 @@
                                     </div>
 
                                     <div class="form-group mb-3">
-                                        <label for="email"><strong>Email</strong></label>
-                                        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{old('email',$users->email)}}"  required>
-                                        <!-- pesan error untuk email -->
-                                        @error('email')
+                                        <label for="new_password_confirmation"><strong>Confirm New Password</strong></label>
+                                        <input id="password" type="password" name="new_password_confirmation" class="form-control @error('new_password_confirmation') is-invalid @enderror"  required>
+                                        <input type="checkbox" onclick="myFunction()">Show Password
+                                        @error('new_password_confirmation')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
@@ -105,6 +106,16 @@
                 </footer>
             </div>
         </div>
+        <script>
+            function myFunction() {
+              var x = document.getElementById("password");
+              if (x.type === "password") {
+                x.type = "text";
+              } else {
+                x.type = "password";
+              }
+            }
+            </script>
         
         <script src="{{url("js/scripts.js")}}"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

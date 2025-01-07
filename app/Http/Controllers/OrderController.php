@@ -9,24 +9,56 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\File; 
+use Illuminate\Support\Facades\DB; 
 
 class OrderController extends Controller
 {
-    public function index()
+    public function index(Request $request)
 	{
-		$order = Order::paginate(10);
-		return view('order',['order'=>$order]);
+		
+		if ($request->ajax()) {
+			$data = Order::select('*');
+			return DataTables::of($data)
+				->addIndexColumn()
+				->addColumn('aksi', function($row) {
+					$editUrl = route('order.edit', $row->id); 
+					$deleteUrl = route('order.destroy', $row->id); 
+					
+					return '
+						<div style="display: flex; align-items: center; gap: 5px;">
+							<a href="' . $editUrl . '">
+								<i class="fa fa-pen-to-square" title="Edit" style="color: blue;"></i>
+							</a>
+							<button data-url="' . $deleteUrl . '" style="border: none; background: none; cursor: pointer;">
+								<i class="fa fa-trash" title="Delete" style="color: red;"></i>
+							</button>
+						</div>
+					';
+
+				})
+				->rawColumns(['aksi']) 
+				->make(true);
+		}
+		
+		return view('/order');
 	}
 
-	// public function index(Request $request){
-	// 	// if ($request->ajax()) {
-	// 	// 	//$datas = Product::all();
-	// 	// 	return datatables()->of(Order::all())->toJson();
-	// 	// }       
+		
 		
 	// 	return view ('order');
 	// }
 
+
+	// public function getOrders(Request $request)
+	// {
+	// 	if ($request->ajax()) {
+	// 		//$datas = Product::all();
+	// 		return datatables()->of(Order::all())->toJson();
+	// 	}        
+		
+	
 	// public function getOrders(Request $request)
 	// {
 	// 	if ($request->ajax()) {
@@ -110,10 +142,28 @@ class OrderController extends Controller
 
 	}
 
-	public function destroy(Order $id){
-		$id->delete();
+	// public function destroy(Order $id){
+	// 	$id->delete();
+	// 	return redirect()->route('order')->with('sukses','Data order berhasil dihapus.');
+	// }
+
+
+	public function destroy($id)
+	{
+		try {
+			$order = Order::findOrFail($id);
+			$order->delete();
+
+			Log::info("Data dengan ID {$id} berhasil dihapus."); // Logging sukses
+			return response()->json(['success' => 'Data berhasil dihapus.'], 200);
+		} catch (\Exception $e) {
+			Log::error("Error saat menghapus data ID {$id}: " . $e->getMessage()); // Logging error
+			return response()->json(['error' => 'Terjadi kesalahan saat menghapus data.'], 500);
+		}
+
 		return redirect()->route('order')->with('sukses','Data order berhasil dihapus.');
 	}
+
 
 	public function deleteAll(){
 
@@ -128,7 +178,8 @@ class OrderController extends Controller
 		}
 
 		return redirect()->route('order');
-		// Order::truncate();
-		// return redirect()->route('order')-> with('sukses', 'Semua data berhasil dihapus.');
+		
 	}
+
+	
 }

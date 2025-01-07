@@ -28,13 +28,13 @@ class UserController extends Controller
        // kita buat validasi pada saat tombol login di klik
       // validas nya username & password wajib di isi 
       $request->validate([
-        'email'=>'required|email',
+        'username'=>'required',
         'password'=>'required'
     ]);
 
    
    // ambil data request username & password saja 
-    $credential = $request->only('email','password');
+    $credential = $request->only('username','password');
 
   // cek jika data username dan password valid (sesuai) dengan data
     if(Auth::attempt($credential)){
@@ -47,7 +47,7 @@ class UserController extends Controller
         }
           
          // jika belum ada role maka ke halaman /
-        return redirect()->intended('/register');
+        return redirect()->intended('/tracking-hotline');
     }
 
 // jika ga ada data user yang valid maka kembalikan lagi ke halaman login
@@ -78,7 +78,7 @@ class UserController extends Controller
             'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'level' => 'user', //  default level
+            'level' => 'user', 
         ]);
  
         return redirect('/login')->with('success', 'Registration successful! Please log in.');

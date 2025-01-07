@@ -13,28 +13,16 @@ return new class extends Migration
     {
         Schema::create('order', function (Blueprint $table) {
             $table->id();
-            $table->string('no_pop_hotline');
-            $table->string('tgl_order');
-            $table->string('no_po_md');
-            $table->string('tgl_proses_md');
-            $table->string('cm');
-            $table->string('nama_dealer');
-            $table->string('nama_konsumen');
-            $table->string('alamat');
-            $table->string('no_hp');
-            $table->string('type_motor');
-            $table->string('tahun');
-            $table->string('no_rangka');
-            $table->string('no_mesin');
-            $table->string('no_po_ahm');
-            $table->string('tgl_order_ke_ahm');
-            $table->string('part_no');
-            $table->string('description');
-            $table->string('qty');
-            $table->string('etd_ahm');
-            $table->string('ps_ahm');
-            $table->string('tgl_supply_ahm');
-            $table->string('tgl_gi');
+            $table->string('no_pop_hotline')->nullable();
+            $table->string('tgl_order')->nullable();
+            $table->string('no_po_md')->nullable();
+            $table->string('tgl_proses_md')->nullable();
+            $table->string('no_po_ahm')->nullable();
+            $table->string('tgl_order_ke_ahm')->nullable();
+            $table->string('part_no')->nullable();
+            $table->string('etd_ahm')->nullable();
+            $table->string('tgl_supply_ahm')->nullable();
+            $table->string('tgl_gi_supply_md')->nullable();
             $table->timestamps();
         });
     }

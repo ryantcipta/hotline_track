@@ -16,7 +16,7 @@
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-truck-front"></i></div>
                         Pengiriman
                     </a> --}}
-                    <a class="nav-link" href="{{route('order')}}">
+                    <a class="nav-link" href="{{url('order')}}">
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-clipboard-list"></i></div>
                         Order
                     </a>

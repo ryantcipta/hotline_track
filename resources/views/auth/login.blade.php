@@ -50,9 +50,9 @@
                                             </div>
                                             @enderror
                                             <div class="form-floating mb-3">
-                                                <input class="form-control @error('email') is-invalid @enderror" id="inputEmail" name="email" type="email" placeholder="name@gmail.com" />
-                                                <label for="inputEmail"><i class="fa-solid fa-envelope"></i> Email address</label>
-                                                @error('email')
+                                                <input class="form-control @error('username') is-invalid @enderror" id="inputUsername" name="username" type="username" placeholder="Username" />
+                                                <label for="inputUsername"> Username</label>
+                                                @error('username')
                                                 <div class="invalid-feedback">
                                                 {{ $message }}
                                                 </div>
@@ -60,7 +60,7 @@
                                             </div>
                                             <div class="form-floating mb-3">
                                                 <input class="form-control @error('password') is-invalid @enderror" id="inputPassword" name="password" type="password" placeholder="Password" />
-                                                <label for="inputPassword"><i class="fa-solid fa-lock"></i> Password</label>
+                                                <label for="inputPassword"> Password</label>
                                                 @error('password')
                                                 <div class="invalid-feedback">
                                                 {{ $message }}
@@ -71,39 +71,25 @@
                                                 <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />
                                                 <label class="form-check-label" for="inputRememberPassword">Remember Password</label>
                                             </div>
-                                            <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="small" href="{{url('/forgot-password')}}">Forgot Password?</a>
-                                                <button type="submit" class="btn btn-primary">Login</button>
+                                            <div class="d-flex align-items-center justify-content-end mt-4 mb-0">
+                                               
+                                                <button type="submit" class="small btn btn-primary">Login</button>
                                             </div>
                                         </form>
                                     </div>
-                                    <div class="card-footer text-center py-3">
-                                        <div class="small"><a href="{{route('register')}}">Need an account? Sign up!</a></div>
-                                    </div>
+                                   
                                 </div>
                             </div>
                         </div>
                     </div>
                 </main>         
             </div>
-            <div id="layoutAuthentication_footer">
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; 2024</div>
-                           
-                        </div>
-                    </div>
-                </footer>
-            </div>
+           
         </div>
         <!-- jQuery -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <!-- Bootstrap JavaScript -->
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="{{url("js/scripts.js")}}"></script>
     </body>
 </html>
