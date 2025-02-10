@@ -42,7 +42,7 @@ class UserController extends Controller
         $user =  Auth::user();
         // cek lagi jika level user admin maka arahkan ke halaman admin
         if($user->level =='admin'){
-            return redirect()->intended('/dashboard')->with('sukses','Selamat datang Admin.');
+            return redirect()->intended('/dashboard')->with('sukses','Welcome Admin.');
 
         }
           

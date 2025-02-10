@@ -22,7 +22,7 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4 mb-4">Change Password</h1>
+                        <h1 class="mt-4 mb-4 text-center">Change Password</h1>
                        
                        {{-- notifikasi sukses --}}
                        @if ($sukses = Session::get('success'))
@@ -32,7 +32,7 @@
                        </div>
                        @endif                                                                                                
                        
-                       <div class="shadow p-3 mb-5 bg-white rounded">
+                       <div class="bg-white rounded">
                         <div class="card mb-4">
                             <div class="card-header">
                                 
@@ -79,7 +79,8 @@
                                     <button type="submit" class="btn btn-md btn-primary mr-2">
                                         <i class="fa-solid fa-floppy-disk"></i> Simpan
                                     </button>
-
+                                    <a href="{{ url()->previous() }}" class="btn btn-md btn-secondary">
+                                        Kembali</a>
                                 </form>
                             </div>
                         </div>

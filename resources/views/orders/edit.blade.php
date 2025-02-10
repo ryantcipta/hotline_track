@@ -10,6 +10,7 @@
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="{{url("css/styles.css")}}" rel="stylesheet" />
         <link href="{{url("css/new.css")}}" rel="stylesheet" />
+        <link rel="stylesheet" href="{{url("css/style_card.css")}}">
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
@@ -19,12 +20,17 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4 mb-4">Edit Order</h1>
+                        <h1 class="mt-4 mb-4 text-center">Edit Order</h1>
                         
                       
                        
-                        <div class="shadow-lg p-3 mb-5 bg-white rounded mb-4">
+                        <div class=" bg-white rounded">
+                            <div class="card mb-4">
+
                             
+                            <div class="card-header">
+                                
+                            </div>
                             <div class="card-body">
                                 @if ($errors->any())
                                 <div class="alert alert-danger">
@@ -41,7 +47,7 @@
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group mb-3">
-                                    <label for="no_pop_hotline" class="mb-2"><strong>No POP Hotline</strong></label>
+                                    <label for="no_pop_hotline"><strong>No POP Hotline</strong></label>
                                     <input type="text" name="no_pop_hotline" class="form-control @error('no_pop_hotline') is-invalid @enderror" value="{{old('',$order->no_pop_hotline)}}"  required>
                                     <!-- pesan error untuk no pop hotline -->
                                     @error('no_pop_hotline')
@@ -51,7 +57,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label for="tgl_order" class="mb-2"><strong>Tgl Order</strong></label>
+                                    <label for="tgl_order"><strong>Tgl Order</strong></label>
                                     <input type="text" name="tgl_order" class="form-control @error('tgl_order') is-invalid @enderror" value="{{old('',$order->tgl_order)}}"  required>
                                     <!-- pesan error untuk nama tgl order -->
                                     @error('tgl_order')
@@ -61,7 +67,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label for="no_po_md" class="mb-2"><strong>No PO MD</strong></label>
+                                    <label for="no_po_md"><strong>No PO MD</strong></label>
                                     <input type="text" name="no_po_md" class="form-control @error('no_po_md') is-invalid @enderror" value="{{old('',$order->no_po_md)}}"  required>
                                     <!-- pesan error untuk nama no po md -->
                                     @error('no_po_md')
@@ -71,7 +77,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label for="tgl_proses_md" class="mb-2"><strong>Tgl Proses MD</strong></label>
+                                    <label for="tgl_proses_md"><strong>Tgl Proses MD</strong></label>
                                     <input type="text" name="tgl_proses_md" class="form-control @error('tgl_proses_md') is-invalid @enderror" value="{{old('',$order->tgl_proses_md)}}"  required>
                                     <!-- pesan error untuk nama tgl proses md -->
                                     @error('tgl_proses_md')
@@ -81,7 +87,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label for="part_no" class="mb-2"><strong>Part No</strong></label>
+                                    <label for="part_no"><strong>Part No</strong></label>
                                     <input type="text" name="part_no" class="form-control @error('part_no') is-invalid @enderror" value="{{old('',$order->part_no)}}"  required>
                                     <!-- pesan error untuk nama part no -->
                                     @error('part_no')
@@ -91,7 +97,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label for="tgl_order_ke_ahm" class="mb-2"><strong>Tgl Order ke AHM</strong></label>
+                                    <label for="tgl_order_ke_ahm"><strong>Tgl Order ke AHM</strong></label>
                                     <input type="text" name="tgl_order_ke_ahm" class="form-control @error('tgl_order_ke_ahm') is-invalid @enderror" value="{{old('',$order->tgl_order_ke_ahm)}}"  required>
                                     <!-- pesan error untuk nama tgl order ke ahm -->
                                     @error('tgl_order_ke_ahm')
@@ -101,7 +107,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label for="etd_ahm" class="mb-2"><strong>ETD AHM</strong></label>
+                                    <label for="etd_ahm"><strong>ETD AHM</strong></label>
                                     <input type="text" name="etd_ahm" class="form-control @error('etd_ahm') is-invalid @enderror" value="{{old('',$order->etd_ahm)}}"  required>
                                     <!-- pesan error untuk nama etd ahm -->
                                     @error('etd_ahm')
@@ -111,7 +117,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label for="tgl_supply_ahm" class="mb-2"><strong>Tgl Supply AHM</strong></label>
+                                    <label for="tgl_supply_ahm"><strong>Tgl Supply AHM</strong></label>
                                     <input type="text" name="tgl_supply_ahm" class="form-control @error('tgl_supply_ahm') is-invalid @enderror" value="{{old('',$order->tgl_supply_ahm)}}" >
                                     <!-- pesan error untuk nama tgl supply ahm -->
                                     @error('tgl_supply_ahm')
@@ -121,7 +127,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label for="tgl_gi_supply_md" class="mb-2"><strong> TGL GI / supply MD</strong></label>
+                                    <label for="tgl_gi_supply_md"><strong> TGL GI / supply MD</strong></label>
                                     <input type="text" name="tgl_gi_supply_md" class="form-control @error('tgl_gi_supply_md') is-invalid @enderror" value="{{old('',$order->tgl_gi_supply_md)}}">
                                     <!-- pesan error untuk nama tgl gi supply md -->
                                     @error('tgl_gi_supply_md')
@@ -131,7 +137,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label for="no_po_ahm" class="mb-2"><strong>No PO AHM</strong></label>
+                                    <label for="no_po_ahm"><strong>No PO AHM</strong></label>
                                     <input type="text" name="no_po_ahm" class="form-control @error('no_po_ahm') is-invalid @enderror" value="{{old('',$order->no_po_ahm)}}"  required>
                                     <!-- pesan error untuk no po ahm -->
                                     @error('no_po_ahm')
@@ -149,7 +155,7 @@
                                     Kembali</a>
                             </form>
                             </div>
-
+                            </div>
 
                         </div>
                         
